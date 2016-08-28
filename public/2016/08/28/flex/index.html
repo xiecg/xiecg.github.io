@@ -1,191 +1,149 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>flex | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="flexflex :)">
-<meta property="og:type" content="article">
-<meta property="og:title" content="flex">
-<meta property="og:url" content="http://yoursite.com/2016/08/28/flex/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="flexflex :)">
-<meta property="og:updated_time" content="2016-08-28T01:14:58.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flex">
-<meta name="twitter:description" content="flexflex :)">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>flex 布局计算公式 | xiecg  ’s bolg</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="xiecg  ’s bolg">
+
   
   
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
   
 
+  
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(http://ocm0knkb1.bkt.clouddn.com/173.jpg)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="http://ocm0knkb1.bkt.clouddn.com/xiecg.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">xiecg  ’s bolg</h1>
+            <h2 class="blog-description"></h2>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/28/flex/" class="article-date">
-  <time datetime="2016-08-28T01:14:03.000Z" itemprop="datePublished">2016-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      flex
-    </h1>
   
 
-      </header>
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-08-28T01:14:03.000Z" itemprop="datePublished">
+          2016-08-28
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h1><p>flex :)</p>
+</span>
+    <h1 class="post-title">flex 布局计算公式</h1>
+    <section class="post-content">
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言">前言</a></h2><p><code>flex</code> 有三个属性值，分别是 <code>flex-grow</code>， <code>flex-shrink</code>， <code>flex-basis</code>，默认值是 <code>0 1 auto</code>。 发现网上详细介绍他们的文章比较少， 今天就详细说说他们，先一个一个看。</p>
+<p>#flex-grow</p>
+<p>定义项目的<code>放大</code>比例，默认值为<code>0</code>，就算存在剩余空间，也不会放大。单单几句话肯定不能表达出意思，来看个DEMO。</p>
+<p><a href="https://jsfiddle.net/xiecg/var5eabk/" target="_blank" rel="external">https://jsfiddle.net/xiecg/var5eabk/</a></p>
+<p><code>flex-grow</code>的默认值为<code>0</code>，如果没有定义该属性，是不会拥有分配<code>剩余空间</code>的权利的。<code>A, B, C, D, E</code> 的宽度分别是 <code>100, 120, 130, 100, 100</code>，父级的宽度是<code>660</code>，父级宽减去子级的全部宽度，这样<code>剩余空间</code>就是<code>110</code>。例子中<code>B, C</code>定义了<code>flex-grow</code>，分别是<code>1，2</code>，那剩余空间分成3份，B<code>1</code>份，C<code>2</code>份，比例就是<code>1：2</code>，分配计算出来的值就是B :<code>36.666666666666664</code>, C：<code>73.33333333333333</code>。这个时候<code>剩余空间</code>就被计算出来了，相加后的结果就是B：<code>156.66666666666666</code>，C：<code>203.33333333333331</code>。</p>
+<p>B的计算公式：<code>120 + (110 / 3) * 1</code></p>
+<p>C的计算公式: <code>130 + (110 / 3) * 2</code></p>
+<h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink">flex-shrink</a></h2><p>定义项目的<code>缩小</code>比例，默认值为<code>1</code>，注意前提是空间不足的情况下，看例子。</p>
+<p><a href="https://jsfiddle.net/xiecg/wLsndgLy/" target="_blank" rel="external">https://jsfiddle.net/xiecg/wLsndgLy/</a></p>
+<p>这里 <code>A, B, C</code> 的宽度分别是<code>155, 200, 50</code>，(注意这里的宽度我是用<code>flex-basis</code>代替的，在这个例子中和<code>width</code>的作用是一样的)。 父级宽度是<code>300</code>，计算超出的空间就是 <code>-150</code>，这样超出的 <code>150px</code> 就要被 <code>A, B, C</code> 消化掉，比例是<code>2：1：1</code>。</p>
+<p>如何消化 ？ 首先是每个项目的<code>wdith</code>值乘以<code>flex-shrink</code>值求积，</p>
+<p>A：<code>(155 * 2) = 310</code><br>B：<code>(200 * 1) = 200</code><br>C：<code>(50 * 1) = 50</code>。</p>
+<p>然后再求和所有项目的乘积。</p>
+<p><code>(310 + 200 + 50) = 560</code></p>
+<p>得到求占比之后还要乘以要腾出的空间。</p>
+<p>A：<code>(310 / 560) * 105</code> = <code>58.125</code><br>B：<code>(200 / 560) * 105</code> = <code>37.5</code><br>C：<code>(50 / 560) * 105</code> = <code>9.375</code></p>
+<p>得到每一项要腾出的空间後然後</p>
+<p>A：<code>(155 - 58.125) = 96.875</code><br>B：<code>(200 - 37.5) = 162.5</code><br>C：<code>(50 - 9.375) = 40.625</code></p>
+<p>好了，这样就得出计算后的宽度了。</p>
+<h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis">flex-basis</a></h2><p>这玩意和<code>width</code>一样，默认值为<code>auto</code>。没啥讲的，不信把上面例子换成<code>width</code>。当然工作中最好用<code>flex-basis</code>，语义化嘛。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结">总结</a></h2><p>如果父级的空间足够：<code>flex-grow</code>有效，<code>flex-shrink</code>无效。</p>
+<p>如果父级的空间不够：<code>flex-shrink</code> 有效，<code>flex-grow</code>无效。</p>
+<p>如果你有疑问欢迎讨论，一起学习。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/28/flex/" data-id="cisdxhyd30001e7sv0vjmurjh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2016/08/28/postName/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">postName</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>xiecg</h4>
+    <p></p>
 </section>
-        
-          <aside id="sidebar">
-  
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2016/08/28/flex/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/28/flex/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/28/flex/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination hidden" role="pagination">
     
+    <span class="page-number">•</span>
+    
+</nav>
+  <div id="comment" class="comments-area">
+	<!--
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+    -->
+
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="2016/08/28/flex/" data-title="flex 布局计算公式" data-url="http://yoursite.com/2016/08/28/flex/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xiecg"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+
+</div>
+</main>
+
 
   
-    
-
+<footer class="site-footer">
   
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/08/28/flex/">flex</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/28/postName/">postName</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/27/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">xiecg  ’s bolg</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
 
-  </div>
+
 </body>
 </html>

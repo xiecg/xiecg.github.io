@@ -29,7 +29,7 @@ Renderer.prototype.heading = function(text, level) {
     headingId[id] = 1;
   }
   // add headerlink
-  return '<h' + level + ' id="' + id + '"><a href="#' + id + '" class="headerlink" title="' + stripHTML(text) + '"></a>' + text + '</h' + level + '>';
+  return '<h' + level + ' id="' + id + '"><a href="#' + id + '" class="headerlink" title="' + stripHTML(text) + '">' + text + '</a></h' + level + '>';
 };
 
 function anchorId(str) {
