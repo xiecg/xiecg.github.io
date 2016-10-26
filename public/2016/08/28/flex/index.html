@@ -55,7 +55,7 @@
 <p>C的计算公式: <code>130 + (110 / 3) * 2</code></p>
 <h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink">flex-shrink</a></h2><p>定义项目的<code>缩小</code>比例，默认值为<code>1</code>，注意前提是空间不足的情况下，看例子。</p>
 <p><a href="https://jsfiddle.net/xiecg/wLsndgLy/" target="_blank" rel="external">https://jsfiddle.net/xiecg/wLsndgLy/</a></p>
-<p>这里 <code>A, B, C</code> 的宽度分别是<code>155, 200, 50</code>，(注意这里的宽度我是用<code>flex-basis</code>代替的，在这个例子中和<code>width</code>的作用是一样的)。 父级宽度是<code>300</code>，计算超出的空间就是 <code>-150</code>，这样超出的 <code>150px</code> 就要被 <code>A, B, C</code> 消化掉，比例是<code>2：1：1</code>。</p>
+<p>这里 <code>A, B, C</code> 的宽度分别是<code>155, 200, 50</code>，(注意这里的宽度我是用<code>flex-basis</code>代替的，在这个例子中和<code>width</code>的作用是一样的)。 父级宽度是<code>300</code>，计算超出的空间就是 <code>-105</code>，这样超出的 <code>105px</code> 就要被 <code>A, B, C</code> 消化掉，比例是<code>2：1：1</code>。</p>
 <p>如何消化 ？ 首先是每个项目的<code>wdith</code>值乘以<code>flex-shrink</code>值求积，</p>
 <p>A：<code>(155 * 2) = 310</code><br>B：<code>(200 * 1) = 200</code><br>C：<code>(50 * 1) = 50</code>。</p>
 <p>然后再求和所有项目的乘积。</p>
