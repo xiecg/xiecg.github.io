@@ -47,8 +47,7 @@
     <h1 class="post-title">深入理解 flex-grow & flex-shrink & flex-basis</h1>
     <section class="post-content">
       <h2 id="前言"><a href="#前言" class="headerlink" title="前言">前言</a></h2><p><code>flex</code> 有三个属性值，分别是 <code>flex-grow</code>， <code>flex-shrink</code>， <code>flex-basis</code>，默认值是 <code>0 1 auto</code>。 发现网上详细介绍他们的文章比较少， 今天就详细说说他们，先一个一个看。</p>
-<p>#flex-grow</p>
-<p>定义项目的<code>放大</code>比例，默认值为<code>0</code>，就算存在剩余空间，也不会放大。单单几句话肯定不能表达出意思，来看个DEMO。</p>
+<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow">flex-grow</a></h2><p>定义项目的<code>放大</code>比例，默认值为<code>0</code>，就算存在剩余空间，也不会放大。单单几句话肯定不能表达出意思，来看个DEMO。</p>
 <p><a href="https://jsfiddle.net/xiecg/var5eabk/" target="_blank" rel="external">https://jsfiddle.net/xiecg/var5eabk/</a></p>
 <p><code>flex-grow</code>的默认值为<code>0</code>，如果没有定义该属性，是不会拥有分配<code>剩余空间</code>的权利的。<code>A, B, C, D, E</code> 的宽度分别是 <code>100, 120, 130, 100, 100</code>，父级的宽度是<code>660</code>，父级宽减去子级的全部宽度，这样<code>剩余空间</code>就是<code>110</code>。例子中<code>B, C</code>定义了<code>flex-grow</code>，分别是<code>1，2</code>，那剩余空间分成3份，B<code>1</code>份，C<code>2</code>份，比例就是<code>1：2</code>，分配计算出来的值就是B :<code>36.666666666666664</code>, C：<code>73.33333333333333</code>。这个时候<code>剩余空间</code>就被计算出来了，相加后的结果就是B：<code>156.66666666666666</code>，C：<code>203.33333333333331</code>。</p>
 <p>B的计算公式：<code>120 + (110 / 3) * 1</code></p>
