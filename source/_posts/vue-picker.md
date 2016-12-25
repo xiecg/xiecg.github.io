@@ -11,7 +11,7 @@ tags:
 
 # DEMO
 
-![code.png][1]
+[vue-picker][1]
 
 # 安装
 
@@ -35,14 +35,10 @@ Vue.component(picker.name, picker);
 ```JavaScript
 export default {
   methods: {
-    onValuesChange(result, pickerEl, reset) {
-      let year = result[0], month = result[1];
-      // result -> 结果
-      // pickerEl -> 方法
-      // reset -> 重置  usage: reset(index, newData)
+    onValuesChange(result1, result2, ...) {
+      console.log(result1, result2);
     }
   },
-
   data() {
     return {
       visible: true,
@@ -77,18 +73,19 @@ Picker Items Options:
 | values | 赋值的数组 | Array | [] |
 | width | 显示的宽度，单位是 % | String | 'flex' |
 | name | 显示数据的字段名，默认值是value .| String | 'value' |
+| maxScrollValue | 显示数据的字段名，默认值是value .| Number | values.length |
  
 # 例子
 
 ```Bash
-npm init
+npm install
 npm run dev
 ```
 
 # 注意
 
-需要 [postcss-loader][2] 来支持picker组件的兼容性.
+需要 [postcss-salad][2] 来支持picker组件的兼容性.
 
 
-  [1]: https://xiecg.github.io/other/vue-picker/code.png
-  [2]: https://github.com/postcss/postcss-loader
+  [1]: https://xiecg.github.io/other/vue-picker/#/date
+  [2]: https://github.com/ElemeFE/postcss-salad
