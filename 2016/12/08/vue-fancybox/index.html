@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>基于vue.js的图像预览组件 | xiecg  ’s bolg</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="xiecg  ’s bolg">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(http://ocm0knkb1.bkt.clouddn.com/173.jpg)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="http://ocm0knkb1.bkt.clouddn.com/xiecg.JPG" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">xiecg  ’s bolg</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-12-08T13:01:33.000Z" itemprop="datePublished">
+          2016-12-08
+      </time>
+    
+</span>
+    <h1 class="post-title">基于vue.js的图像预览组件</h1>
+    <section class="post-content">
+      <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>基于vue.js图像预览组件 </p>
+<blockquote>
+<p>更多的手势操作还是开发中</p>
+</blockquote>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://xiecg.github.io/other/vue-fancybox/#/baseUsage">vue-fancybox</a></p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p><a href="https://github.com/xiecg/vue-fancybox" target="_blank" rel="external">github</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-fancybox --save</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> fancyBox <span class="keyword">from</span> <span class="string">'vue-fancybox'</span>;</div></pre></td></tr></table></figure>
+<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span> <span class="attr">v-for</span>=<span class="string">"(n, index) in imageList"</span> <span class="attr">:data-index</span>=<span class="string">"index"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> @<span class="attr">click</span>=<span class="string">"open($event)"</span> <span class="attr">:src</span>=<span class="string">"n.url"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">imageList</span>: [</div><div class="line">        &#123; <span class="attr">width</span>: <span class="number">900</span>, <span class="attr">height</span>: <span class="number">675</span>, <span class="attr">url</span>: <span class="string">'http://ocm0knkb1.bkt.clouddn.com/1-1.jpg'</span> &#125;,</div><div class="line">        &#123; <span class="attr">width</span>: <span class="number">601</span>, <span class="attr">height</span>: <span class="number">1024</span>, <span class="attr">url</span>: <span class="string">'http://ocm0knkb1.bkt.clouddn.com/1-2.jpg'</span> &#125;,</div><div class="line">        &#123; <span class="attr">width</span>: <span class="number">1024</span>, <span class="attr">height</span>: <span class="number">700</span>, <span class="attr">url</span>: <span class="string">'http://ocm0knkb1.bkt.clouddn.com/1-3.jpg'</span> &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    open (e) &#123;</div><div class="line">      fancyBox(e.target, <span class="keyword">this</span>.imageList);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p>fancyBox Parameter:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e.target</td>
+<td>当前点击的图片</td>
+</tr>
+<tr>
+<td>this.imageList</td>
+<td>所有的图片列表</td>
+</tr>
+</tbody>
+</table>
+<p>this.imageList Options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>图片的宽度</td>
+<td>Number</td>
+</tr>
+<tr>
+<td>height</td>
+<td>图片的高度</td>
+<td>Number</td>
+</tr>
+<tr>
+<td>url</td>
+<td>图片的的地址</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> example</div><div class="line">$ npm install</div><div class="line">$ npm run dev</div></pre></td></tr></table></figure>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>需要 <a href="https://github.com/ElemeFE/postcss-salad" target="_blank" rel="external">postcss-salad</a> 配合</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>xiecg</h4>
+    <p></p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://xiecg.github.io/2016/12/08/vue-fancybox/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://xiecg.github.io/2016/12/08/vue-fancybox/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://xiecg.github.io/2016/12/08/vue-fancybox/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination hidden" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2016/10/23/vue-picker/">
+        基于vue.js的选择器组件 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+	<!--
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+    -->
+
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="2016/12/08/vue-fancybox/" data-title="基于vue.js的图像预览组件" data-url="https://xiecg.github.io/2016/12/08/vue-fancybox/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xiecg"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">xiecg  ’s bolg</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
