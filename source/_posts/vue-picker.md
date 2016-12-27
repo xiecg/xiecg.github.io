@@ -73,7 +73,7 @@ Picker Items Options:
 | values | 赋值的数组 | Array | [] |
 | width | 显示的宽度，单位是 % | String | 'flex' |
 | name | 显示数据的字段名，默认值是value .| String | 'value' |
-| maxScrollValue | 显示数据的字段名，默认值是value .| Number | values.length |
+| maxScrollValue | 最大的滚动值 .| Number | values.length |
  
 # 例子
 
