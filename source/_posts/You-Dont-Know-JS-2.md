@@ -31,3 +31,42 @@ tags:
 JavaScript 中的基本数据类型提供了封装对象，称为原生函数（ `String`, `Object`, `Number` 等）。
 
 对于基本类型值，比如 `var text = 'text';` 要访问 `text` 的 `length` 方法，引擎会自动对这些值进行封装，就是对应的`封装对象`来包装他。
+
+#### 4：强制类型转换
+
+###### 4-1:   ~ 运算符
+
+```JavaScript
+~42;	// -(42+1) ==> 43
+```
+
+在 `-(x+1)` 中 `x` 如果为 `-1` 时，~ 和一些数字值在一起就会返回假值 `0`， 其他情况都是返回 `真值`。
+
+`-1` 是一个 “哨位值”，`-1` 表示失败，大于等于 `0` 表示成功。
+
+`indexOf`  遵循这一惯例：
+
+```JavaScript
+var a = 'Hello World';
+if ( a.indexOf( 'lo' ) >= 0 ) { ... } 	// true， 找到匹配
+if ( a.indexOf( 'lo' ) != -1 ) { ... } 	// true， 找到匹配
+if ( a.indexOf( 'lo' ) < 0 ) { ... }	// true, 没有找到匹配
+if ( a.indexOf( 'lo' ) == -1 ) { ... }	// true，没有找到匹配
+```
+如果换成 `~` 运算符会更简洁：
+
+```JavaScript
+var a = 'Hello World';
+console.log( ~a.indexOf( 'lo' ) );	// -4, 真值
+if ( ~a.indexOf('lo') ) { ... } 	// true, 找到匹配
+console.log( ~a.indexOf('ol') );	// 0, 假值
+if ( !~a.indexOf('ol') ) { ... };	// true, 没有找到匹配
+```
+
+字位截取：
+
+```JavaScript
+Math.floor( -49.6 );	// -50
+~~-49.6;				// -49
+```
+
