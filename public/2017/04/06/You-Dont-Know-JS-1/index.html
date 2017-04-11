@@ -59,6 +59,12 @@
 <h4 id="4：提升"><a href="#4：提升" class="headerlink" title="4：提升"></a>4：提升</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div></pre></td></tr></table></figure>
 <p>它将<code>var a</code>和<code>a = 2</code>当作两个单独的声明，第一个是<code>编译阶段</code>的任务，而第二个则是<code>执行阶段</code>的任务。<br>在这个<code>编译阶段</code>就把所有的<strong>声明</strong><code>（变量和函数）</code>都被移动到各自<code>作用域</code>的顶端，这个过程叫做<code>提升</code>。<br><strong>声明</strong>本身会被<code>提升</code>，而包含函数表达式的赋值在内的赋值操作<strong>不会</strong>被提升。</p>
 <h4 id="5：作用域闭包"><a href="#5：作用域闭包" class="headerlink" title="5：作用域闭包"></a>5：作用域闭包</h4><p>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
+<h4 id="6：this"><a href="#6：this" class="headerlink" title="6：this"></a>6：this</h4><p><code>this</code> 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用<code>(也就是函数的调用方法)</code>。</p>
+<p>默认绑定：<code>foo();</code><br>隐式绑定：<code>obj.foo();</code><br>显式绑定：<code>foo.call(..)</code>，<code>foo.apply(..)</code>，<code>foo.bind(..)</code><br>new绑定：<code>new Foo(..)</code></p>
+<p><code>严格模式</code>上默认绑定的 <code>this</code>会绑定到 <code>undefined</code>。</p>
+<p>显式绑定也称为<strong><code>硬绑定</code></strong>，绑定之后无法使用隐式绑定或者显式绑定来修改 <code>this</code>。</p>
+<p>显示绑定比隐式绑定的优先级高。<br>new绑定比隐式绑定的优先级高。</p>
+<p><code>ES6</code> 中的<code>箭头函数</code>并不会使用四条标准的绑定规则，绑定无法被修改，而是根据当前的词法作用域来决定 <code>this</code>。</p>
 
     </section>
     <footer class="post-footer">
