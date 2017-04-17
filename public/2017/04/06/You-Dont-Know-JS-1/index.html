@@ -79,6 +79,8 @@
 <h4 id="8：原型"><a href="#8：原型" class="headerlink" title="8：原型"></a>8：原型</h4><p>如果要访问对象中并不存在的一个属性，<code>[[Get]]</code> 操作就会查找对象内部<code>[[Prototype]]</code> 关联的对象。这个关联关系实际上定义了一条“原型链”，在查找属性时会对它进行遍历。</p>
 <p>所有普通对象都有内置的 <code>Object.prototype</code>，指向原型链的顶端(比如说全局作用域)，如 果在原型链中找不到指定的属性就会停止。<code>toString()</code>、<code>valueOf()</code> 和其他一些通用的功能 都存在于 <code>Object.prototype</code> 对象上，因此语言中所有的对象都可以使用它们。</p>
 <p><code>Object.create(null)</code> 会创建一个拥有空(或者说<code>null</code>) <code>[[Prototype]]</code> 链接的对象，这个对象无法进行委托。由于这个对象没有原型链，所以 <code>instanceof</code>操作符(之前解释过)无法进行判断，因此总是会返回 <code>false</code>。 这些特殊的空 <code>[[Prototype]]</code> 对象通常被称作<code>“字典”</code>，它们完全不会受到原 型链的干扰，因此非常适合用来存储数据。</p>
+<h4 id="9：行为委托"><a href="#9：行为委托" class="headerlink" title="9：行为委托"></a>9：行为委托</h4><p>行为委托认为对象之间是兄弟关系，互相委托，而不是父类和子类的关系。<code>JavaScript</code> 的 <code>[[Prototype]]</code> 机制本质上就是行为委托机制。也就是说，我们可以选择在 <code>JavaScript</code> 中努 力实现类机制，也可以拥抱更自然的 <code>[[Prototype]]</code> 委托机制。</p>
+<p>对象关联<code>(对象之前互相关联</code>)是一种编码风格，它倡导的是直接创建和关联对象，不把它们抽象成类。对象关联可以用基于 <code>[[Prototype]]</code> 的行为委托非常自然地实现。</p>
 
     </section>
     <footer class="post-footer">
