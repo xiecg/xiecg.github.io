@@ -63,3 +63,54 @@ new绑定：`new Foo(..)`
 new绑定比隐式绑定的优先级高。
 
 `ES6` 中的`箭头函数`并不会使用四条标准的绑定规则，绑定无法被修改，而是根据当前的词法作用域来决定 `this`。
+
+#### 7：对象
+
+`getOwnPropertyDescriptor` 属性描述符
+
+`writable` 可写
+
+`enumerable` 可枚举
+`myObject.propertyIsEnumerable('a')` 能否可枚举 
+
+`configurable` 可配置 
+
+
+```javascript
+// 禁止扩展：添加属性失效，非严格模式下，创建一个属性会静默失败。严格模式下，将会抛出`TypeError`错误。
+Object.preventExtensions( obj );
+```
+
+```javascript
+// 密封：这个方法实际上会在一个现有对象上调用 `Object.preventExtensions(..)` 并把所有现有属性标记为 `configurable:false`。
+Object.seal( obj );
+```
+
+```javascript
+// 冻结：这个方法实际上会在一个现有对象上调用 `Object.seal(..)` 并把所有“数据访问”属性标记为 `writable:false`，这样就无法修改它们 的值。
+Object.freeze( obj )
+```
+
+```javascript
+var myObject = {
+  a:2
+};
+("a" in myObject); // true
+("b" in myObject); // false
+myObject.hasOwnProperty( "a" ); // true
+myObject.hasOwnProperty( "b" ); // false
+```
+`in` 会检查`[[Prototype]]`原型链，`hasOwnProperty`只会检查自身属性。
+
+`Object.keys(..)` 会返回一个数组，包含所有可枚举属性，`Object.getOwnPropertyNames(..) `会返回一个数组，包含所有属性，无论它们是否可枚举。
+
+`in` 和 `hasOwnProperty(..)` 的区别在于是否查找 `[[Prototype]]` 链，然而，`Object.keys(..)` 和 `Object.getOwnPropertyNames(..)` 都只会查找对象直接包含的属性。
+
+#### 8：原型
+
+如果要访问对象中并不存在的一个属性，`[[Get]]` 操作就会查找对象内部`[[Prototype]]` 关联的对象。这个关联关系实际上定义了一条“原型链”，在查找属性时会对它进行遍历。
+
+所有普通对象都有内置的 `Object.prototype`，指向原型链的顶端(比如说全局作用域)，如 果在原型链中找不到指定的属性就会停止。`toString()`、`valueOf()` 和其他一些通用的功能 都存在于 `Object.prototype` 对象上，因此语言中所有的对象都可以使用它们。
+
+`Object.create(null)` 会创建一个拥有空(或者说`null`) `[[Prototype]]` 链接的对象，这个对象无法进行委托。由于这个对象没有原型链，所以 `instanceof `操作符(之前解释过)无法进行判断，因此总是会返回 `false`。 这些特殊的空 `[[Prototype]]` 对象通常被称作`“字典”`，它们完全不会受到原 型链的干扰，因此非常适合用来存储数据。
+

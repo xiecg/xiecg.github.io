@@ -65,6 +65,20 @@
 <p>显式绑定也称为<strong><code>硬绑定</code></strong>，绑定之后无法使用隐式绑定或者显式绑定来修改 <code>this</code>。</p>
 <p>显示绑定比隐式绑定的优先级高。<br>new绑定比隐式绑定的优先级高。</p>
 <p><code>ES6</code> 中的<code>箭头函数</code>并不会使用四条标准的绑定规则，绑定无法被修改，而是根据当前的词法作用域来决定 <code>this</code>。</p>
+<h4 id="7：对象"><a href="#7：对象" class="headerlink" title="7：对象"></a>7：对象</h4><p><code>getOwnPropertyDescriptor</code> 属性描述符</p>
+<p><code>writable</code> 可写</p>
+<p><code>enumerable</code> 可枚举<br><code>myObject.propertyIsEnumerable(&#39;a&#39;)</code> 能否可枚举 </p>
+<p><code>configurable</code> 可配置 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 禁止扩展：添加属性失效，非严格模式下，创建一个属性会静默失败。严格模式下，将会抛出`TypeError`错误。</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions( obj );</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 密封：这个方法实际上会在一个现有对象上调用 `Object.preventExtensions(..)` 并把所有现有属性标记为 `configurable:false`。</span></div><div class="line"><span class="built_in">Object</span>.seal( obj );</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 冻结：这个方法实际上会在一个现有对象上调用 `Object.seal(..)` 并把所有“数据访问”属性标记为 `writable:false`，这样就无法修改它们 的值。</span></div><div class="line"><span class="built_in">Object</span>.freeze( obj )</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">  <span class="attr">a</span>:<span class="number">2</span></div><div class="line">&#125;;</div><div class="line">(<span class="string">"a"</span> <span class="keyword">in</span> myObject); <span class="comment">// true</span></div><div class="line">(<span class="string">"b"</span> <span class="keyword">in</span> myObject); <span class="comment">// false</span></div><div class="line">myObject.hasOwnProperty( <span class="string">"a"</span> ); <span class="comment">// true</span></div><div class="line">myObject.hasOwnProperty( <span class="string">"b"</span> ); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p><code>in</code> 会检查<code>[[Prototype]]</code>原型链，<code>hasOwnProperty</code>只会检查自身属性。</p>
+<p><code>Object.keys(..)</code> 会返回一个数组，包含所有可枚举属性，<code>Object.getOwnPropertyNames(..)</code>会返回一个数组，包含所有属性，无论它们是否可枚举。</p>
+<p><code>in</code> 和 <code>hasOwnProperty(..)</code> 的区别在于是否查找 <code>[[Prototype]]</code> 链，然而，<code>Object.keys(..)</code> 和 <code>Object.getOwnPropertyNames(..)</code> 都只会查找对象直接包含的属性。</p>
+<h4 id="8：原型"><a href="#8：原型" class="headerlink" title="8：原型"></a>8：原型</h4><p>如果要访问对象中并不存在的一个属性，<code>[[Get]]</code> 操作就会查找对象内部<code>[[Prototype]]</code> 关联的对象。这个关联关系实际上定义了一条“原型链”，在查找属性时会对它进行遍历。</p>
+<p>所有普通对象都有内置的 <code>Object.prototype</code>，指向原型链的顶端(比如说全局作用域)，如 果在原型链中找不到指定的属性就会停止。<code>toString()</code>、<code>valueOf()</code> 和其他一些通用的功能 都存在于 <code>Object.prototype</code> 对象上，因此语言中所有的对象都可以使用它们。</p>
+<p><code>Object.create(null)</code> 会创建一个拥有空(或者说<code>null</code>) <code>[[Prototype]]</code> 链接的对象，这个对象无法进行委托。由于这个对象没有原型链，所以 <code>instanceof</code>操作符(之前解释过)无法进行判断，因此总是会返回 <code>false</code>。 这些特殊的空 <code>[[Prototype]]</code> 对象通常被称作<code>“字典”</code>，它们完全不会受到原 型链的干扰，因此非常适合用来存储数据。</p>
 
     </section>
     <footer class="post-footer">
