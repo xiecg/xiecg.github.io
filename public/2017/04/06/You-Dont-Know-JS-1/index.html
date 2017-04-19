@@ -56,7 +56,7 @@
 <h4 id="3：函数作用域和块作用域"><a href="#3：函数作用域和块作用域" class="headerlink" title="3：函数作用域和块作用域"></a>3：函数作用域和块作用域</h4><p><code>函数</code>是<code>JavaScript</code>中最常见的<code>作用域单元</code>，但这并不是唯一的，<code>块作用域</code>指的是标识符不仅可以属于函数内部，也可以属于某个代码块 <code>{...}</code> 。</p>
 <p>从 <code>ES3</code> 开始，<code>try/catch</code> 结构在 <code>catch</code> <strong>分句</strong>中具有块作用域。</p>
 <p><code>ES6</code> 增加了<code>let</code> 和 <code>const</code> 。</p>
-<h4 id="4：提升"><a href="#4：提升" class="headerlink" title="4：提升"></a>4：提升</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<h4 id="4：提升"><a href="#4：提升" class="headerlink" title="4：提升"></a>4：提升</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = 2;</div></pre></td></tr></table></figure>
 <p>它将<code>var a</code>和<code>a = 2</code>当作两个单独的声明，第一个是<code>编译阶段</code>的任务，而第二个则是<code>执行阶段</code>的任务。<br>在这个<code>编译阶段</code>就把所有的<strong>声明</strong><code>（变量和函数）</code>都被移动到各自<code>作用域</code>的顶端，这个过程叫做<code>提升</code>。<br><strong>声明</strong>本身会被<code>提升</code>，而包含函数表达式的赋值在内的赋值操作<strong>不会</strong>被提升。</p>
 <h4 id="5：作用域闭包"><a href="#5：作用域闭包" class="headerlink" title="5：作用域闭包"></a>5：作用域闭包</h4><p>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</p>
 <h4 id="6：this"><a href="#6：this" class="headerlink" title="6：this"></a>6：this</h4><p><code>this</code> 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用<code>(也就是函数的调用方法)</code>。</p>
