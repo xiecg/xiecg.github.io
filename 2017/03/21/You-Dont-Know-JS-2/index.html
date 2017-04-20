@@ -57,7 +57,9 @@
 <p>扩展阅读：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="external">Equality_comparisons_and_sameness</a></p>
 <h4 id="3：-原生函数"><a href="#3：-原生函数" class="headerlink" title="3： 原生函数"></a>3： 原生函数</h4><p>JavaScript 中的基本数据类型提供了封装对象，称为原生函数（ <code>String</code>, <code>Object</code>, <code>Number</code> 等）。</p>
 <p>对于基本类型值，比如 <code>var text = &#39;text&#39;;</code> 要访问 <code>text</code> 的 <code>length</code> 方法，引擎会自动对这些值进行封装，就是对应的<code>封装对象</code>来包装他。</p>
-<h4 id="4：强制类型转换"><a href="#4：强制类型转换" class="headerlink" title="4：强制类型转换"></a>4：强制类型转换</h4><h6 id="4-1-运算符"><a href="#4-1-运算符" class="headerlink" title="4-1:   ~ 运算符"></a>4-1:   ~ 运算符</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~<span class="number">42</span>;	<span class="comment">// -(42+1) ==&gt; 43</span></div></pre></td></tr></table></figure>
+<h4 id="4：强制类型转换"><a href="#4：强制类型转换" class="headerlink" title="4：强制类型转换"></a>4：强制类型转换</h4><p>将值从一种类型转换为另一种类型通常称为<code>类型转换(type casting)</code>，这是显式的情况; 隐式的情况称为<code>强制类型转换(coercion)</code>。</p>
+<p>也可以这样来区分: <code>类型转换</code>发生在静态类型语言的<code>编译阶段</code>，而<code>强制类型转换</code>则发生在动态类型语言的<code>运行时(runtime)</code>。</p>
+<h6 id="4-1-运算符"><a href="#4-1-运算符" class="headerlink" title="4-1:   ~ 运算符"></a>4-1:   ~ 运算符</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~<span class="number">42</span>;	<span class="comment">// -(42+1) ==&gt; 43</span></div></pre></td></tr></table></figure>
 <p>在 <code>-(x+1)</code> 中 <code>x</code> 如果为 <code>-1</code> 时，~ 和一些数字值在一起就会返回假值 <code>0</code>， 其他情况都是返回 <code>真值</code>。</p>
 <p><code>-1</code> 是一个 “哨位值”，<code>-1</code> 表示失败，大于等于 <code>0</code> 表示成功。</p>
 <p><code>indexOf</code>  遵循这一惯例：</p>
