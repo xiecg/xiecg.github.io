@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>deep-node.js | xiecg  ’s bolg</title>
+  <title>深入浅出 Node.js 笔记 | xiecg  ’s bolg</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -44,9 +44,9 @@
       </time>
     
 </span>
-    <h1 class="post-title">deep-node.js</h1>
+    <h1 class="post-title">深入浅出 Node.js 笔记</h1>
     <section class="post-content">
-      <h1 id="深入浅出-Node-js-笔记"><a href="#深入浅出-Node-js-笔记" class="headerlink" title="深入浅出 Node.js 笔记"></a>深入浅出 Node.js 笔记</h1><h4 id="1：模块机制"><a href="#1：模块机制" class="headerlink" title="1：模块机制"></a>1：模块机制</h4><h5 id="1-1：优先从缓存加载"><a href="#1-1：优先从缓存加载" class="headerlink" title="1-1：优先从缓存加载"></a>1-1：优先从缓存加载</h5><p>前端浏览器会缓存静态脚本文件以提高性能问题，<code>Node</code> 对引入的模块都会进行缓存，以减少二次引用的开销，不同的是，浏览器仅仅缓存文件，而 <code>Node</code> 缓存的是编译和执行之后的对象。</p>
+      <h4 id="1：模块机制"><a href="#1：模块机制" class="headerlink" title="1：模块机制"></a>1：模块机制</h4><h5 id="1-1：优先从缓存加载"><a href="#1-1：优先从缓存加载" class="headerlink" title="1-1：优先从缓存加载"></a>1-1：优先从缓存加载</h5><p>前端浏览器会缓存静态脚本文件以提高性能问题，<code>Node</code> 对引入的模块都会进行缓存，以减少二次引用的开销，不同的是，浏览器仅仅缓存文件，而 <code>Node</code> 缓存的是编译和执行之后的对象。</p>
 <p>不论是核心模块还是文件模块，<code>require()</code> 方法对相同模块的二次加载都一律采用缓存优先的方式，这是第一优先的。不同之处在于核心模块的缓存检查先于文件模块的缓存检查。</p>
 
     </section>
@@ -89,7 +89,7 @@
     -->
 
 	<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2017/04/23/deep-node-js/" data-title="deep-node.js" data-url="https://xiecg.github.io/2017/04/23/deep-node-js/"></div>
+		<div class="ds-thread" data-thread-key="2017/04/23/deep-node-js/" data-title="深入浅出 Node.js 笔记" data-url="https://xiecg.github.io/2017/04/23/deep-node-js/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
